@@ -430,17 +430,20 @@ class RestRenderer(mistune.Renderer):
 
     def image(self, src, title, text):
         """Rendering a image with title and text.
-
         :param src: source link of the image.
         :param title: title text of the image.
         :param text: alt text of the image.
         """
+
+        image_name = os.path.basename(src)
+        target = "/_images/{}".format(image_name)
+
         # rst does not support title option
         # and I couldn't find title attribute in HTML standard
         return '\n'.join([
             '',
             '.. image:: {}'.format(src),
-            '   :target: {}'.format(src),
+            '   :target: {}'.format(target),
             '   :alt: {}'.format(text),
             '',
         ])
