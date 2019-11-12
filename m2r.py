@@ -437,7 +437,7 @@ class RestRenderer(mistune.Renderer):
         """
 
         image_name = os.path.basename(src)
-        target = f"/_images/{image_name}"
+        target = "/_images/{}".format(image_name)
 
         # rst does not support title option
         # and I couldn't find title attribute in HTML standard
